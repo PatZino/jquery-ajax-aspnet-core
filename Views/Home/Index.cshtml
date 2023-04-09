@@ -1,0 +1,45 @@
+﻿<link rel="icon" type="image/png" href="https://www.yogihosting.com/wp-content/themes/yogi-yogihosting/Images/favicon.ico" />
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        val1 = "5";
+        val2 = "2";
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Calculate")",
+            data: {number1: val1, number2: val2},
+            dataType: "json",
+            success: function (msg) {
+                console.log(msg);
+                console.log(msg.add);
+                console.log(msg.substract);
+                console.log(msg.multiply);
+                console.log(msg.divide);
+            },
+            error: function (req, status, error) {
+                alert("An error occurred");
+            }
+        });
+
+        @*$.ajax({
+            type: "POST",
+            url: "@Url.Action("Add")",
+            data: {number1: val1, number2: val2},
+            dataType: "text",
+            success: function (msg) {
+                console.log(msg);
+            },
+            error: function (req, status, error) {
+                console.log(msg);
+            }
+        });*@
+    });
+</script>
